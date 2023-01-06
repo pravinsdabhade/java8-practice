@@ -43,7 +43,7 @@ public class Main {
         }
         System.out.println("Arrays Multiplication using simple for loop: " + multiplyValue);
 
-        Optional<Boolean> output = Optional.of(listOfNumbers.stream().reduce((a, b) -> a * b).isPresent());
+        Optional<Integer> output = listOfNumbers.stream().reduce((a,b) -> a * b);
         if (output.isPresent()) {
             System.out.println("Arrays Multiplication using java8: " + output.get());
         } else {
