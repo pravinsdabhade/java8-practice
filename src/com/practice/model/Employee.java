@@ -6,12 +6,16 @@ public class Employee {
     private int id;
     private String name;
     private double salary;
+    private String gender;
 
+    private String department;
     private String city;
 
-    public Employee(int id, String name, double salary, String city) {
+    public Employee(int id, String name, String gender, String deparment, double salary, String city) {
         this.id = id;
         this.name = name;
+        this.department = department;
+        this.gender = gender;
         this.salary = salary;
         this.city = city;
     }
@@ -30,6 +34,22 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public double getSalary() {
@@ -53,6 +73,7 @@ public class Employee {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
                 ", salary=" + salary + '\'' +
                 ", city=" + city +
                 '}';
@@ -61,13 +82,12 @@ public class Employee {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Employee)) return false;
-        Employee employee = (Employee) o;
-        return getId() == employee.getId() && Double.compare(employee.getSalary(), getSalary()) == 0 && Objects.equals(getName(), employee.getName());
+        if (!(o instanceof Employee employee)) return false;
+        return getId() == employee.getId() && Double.compare(employee.getSalary(), getSalary()) == 0 && Objects.equals(getName(), employee.getName()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getDepartment(), employee.getDepartment()) && Objects.equals(getCity(), employee.getCity());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getSalary());
+        return Objects.hash(getId(), getName(), getSalary(), getGender(), getDepartment(), getCity());
     }
 }
